@@ -318,6 +318,6 @@ function soSanh_soLuong() {
     }
     document.getElementById("result10").style.display = "block";  //hiện kết quả
     document.getElementById("result10").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu success
-    document.getElementById("result10").innerHTML = "Số lượng số dương: " + soDuong + " ("+arr_soDuong+") <br> Số lượng số âm: "+ soAm + " ("+arr_soAm+") <br>Vậy " + ketqua
+    document.getElementById("result10").innerHTML = "Số lượng số dương: " + soDuong + " ("+arr_soDuong+") <br> Số lượng số âm: "+ soAm + " ("+arr_soAm+") <br> => Vậy " + ketqua
 }
 document.getElementById("btnCalc10").onclick = soSanh_soLuong;
