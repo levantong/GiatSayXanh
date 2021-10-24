@@ -123,23 +123,44 @@ document.getElementById("btnCalc5").onclick = timSo_chanCuoi;
 
 function hienGiaTri_kemViTri(){
     var GiaTri_kemViTri = ""
-    for(var i = 1; i < arr.length; i++){ //duyệt mảng
-        GiaTri_kemViTri += arr[i] + " (Vị trí: "+i+") <br>"
+    for(var i = 0; i < arr.length; i++){ //duyệt mảng
+        GiaTri_kemViTri += " ["+i+"]: "+arr[i] +  "<br>"
     }
-    document.getElementById("ShowArray").innerHTML = "Mảng trước khi đổi: " + GiaTri_kemViTri
+    document.getElementById("ShowArray").innerHTML = "Mảng trước khi đổi: <br>" + GiaTri_kemViTri
 
 }
 document.getElementById("btn-ShowArray").onclick = hienGiaTri_kemViTri;
 
+//làm hàm thông báo giá trị và vị trí user đã chọn
+
+function hienSo_daChon1(){
+    var viTri1 =document.getElementById("viTri1").value
+    document.getElementById("hien2soChon").innerHTML = "Bạn đã chọn đổi 2 số: " + arr[viTri1] + " (vị trí "+ viTri1+")"
+}
+
+document.getElementById("viTri1").addEventListener('change', hienSo_daChon1) 
+
+function hienSo_daChon2(){
+    var viTri2 =document.getElementById("viTri2").value
+    document.getElementById("hien2soChon").append(" và số "+ arr[viTri2] + " (vị trí "+ viTri2+")")
+}
+
+document.getElementById("viTri2").addEventListener('change', hienSo_daChon2) 
+
+//hàm đổi chỗ
 
 function doiCho(){
-    var viTri1 = Number(document.getElementById("viTri1").value)
-    var viTri2 = Number(document.getElementById("viTri2").value)
+    var viTri1 = document.getElementById("viTri1").value
+    var viTri2 = document.getElementById("viTri2").value
 
-    if (viTri1 > arr.length || viTri2 > arr.length) {
+    if (viTri1 >= arr.length || viTri2 >= arr.length) { //Thông báo nhắc khi user nhập vào vị trí lớn hơn độ dài mảng
         document.getElementById("result6").style.display = "block";  //hiện kết quả
         document.getElementById("result6").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warrning
         document.getElementById("result6").innerHTML = "Vui lòng nhập vào vị trí nhỏ hơn " + arr.length +"!"
+    } else if (viTri1.length == 0 || viTri2.length == 0 ) { //Thông báo nhắc user nhập đủ 2 vị trí cần đổi, tránh trường hợp không nhập nó mặc định vị trí là 0
+        document.getElementById("result6").style.display = "block";  //hiện kết quả
+        document.getElementById("result6").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warrning
+        document.getElementById("result6").innerHTML = "Vui lòng nhập vào cả 2 vị trí!"
     } else {
         var temp = 0;
         temp = arr[viTri1]
@@ -147,18 +168,73 @@ function doiCho(){
         arr[viTri2] = temp
 
         var GiaTri_kemViTri = ""
-        for (var i = 1; i <= arr.length; i++) { //duyệt mảng
+        for (var i = 0; i < arr.length; i++) { //duyệt mảng
             if (i == viTri1 || i == viTri2) {
-                GiaTri_kemViTri += "<span style='background-color: tomato;'>" + arr[i] + " (Vị trí: " + i + ") - Đã đổi <br> </span>"
+                GiaTri_kemViTri += "<span style='background-color: tomato;'>" + " [" + i + "]: " + arr[i] + " (Đã đổi) <br></span>"
             } else {
-                GiaTri_kemViTri += arr[i] + " (Vị trí: " + i + ") <br>"
+                GiaTri_kemViTri += " [" + i + "]: " + arr[i] + "<br>"
             }
         }
         document.getElementById("result6").style.display = "block";  //hiện kết quả
-        document.getElementById("result5").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu warrning
-        document.getElementById("result6").innerHTML = "Mảng sau khi đổi: " + GiaTri_kemViTri
+        document.getElementById("result6").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu warrning
+        document.getElementById("result6").innerHTML = "Mảng sau khi đổi: <br>" + GiaTri_kemViTri
     }
     
 }
 document.getElementById("btnCalc6").onclick = doiCho;
+
+    /** Bài 7 - Sắp xếp tăng dần */
+
+function sapXep_tangDan() {
+    var newArr = []; //tạo mảng mới clone từ mảng gốc, sắp xếp mảng này để ko ảnh hưởng tới mảng gốc
+    for (var i = 0; i < arr.length; i++) {
+        newArr.push(arr[i])
+    }
+
+    console.log(newArr)
+    for (var i = 0; i < newArr.length; i++) { //duyệt mảng
+        for (var j = 0; j < newArr.length; j++) {
+            if (newArr[j] > newArr[i]) {
+                var temp = newArr[i];
+                newArr[i] = newArr[j];
+                newArr[j] = temp
+            }
+        }
+    }
+    console.log(newArr)
+    document.getElementById("result7").style.display = "block";  //hiện kết quả
+    document.getElementById("result7").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu warrning
+    document.getElementById("result7").innerHTML = "Mảng sắp xếp tăng dần: <br>" + newArr
+}
+document.getElementById("btnCalc7").onclick = sapXep_tangDan;
+
+/** Bài 8 - Tìm số nguyên tố đầu tiên */
+
+function timSo_nguyenTo() {
+    for (var i = 0; i < arr.length; i++) {  //duyệt mảng
+        var So_nguyenTo = 0;
+        var count = 0;
+        for (var j = 1; j <= arr[i]; j++) {
+            if (arr[i] % j == 0) {
+                count++
+            }
+        }
+        if (count == 2) {
+            document.getElementById("result8").style.display = "block";  //hiện kết quả
+            document.getElementById("result8").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu warrning
+            document.getElementById("result8").innerHTML = "Số nguyên tố đầu tiên là: " + arr[i]
+            return
+
+        } else {
+            So_nguyenTo = -1
+            document.getElementById("result8").style.display = "block";  //hiện kết quả
+            document.getElementById("result8").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu warrning
+            document.getElementById("result8").innerHTML = "Không có số nguyên tố nào"
+        }
+    }
+
+}
+
+document.getElementById("btnCalc8").onclick = timSo_nguyenTo;
+
 
