@@ -191,7 +191,6 @@ function sapXep_tangDan() {
         newArr.push(arr[i])
     }
 
-    console.log(newArr)
     for (var i = 0; i < newArr.length; i++) { //duyệt mảng
         for (var j = 0; j < newArr.length; j++) {
             if (newArr[j] > newArr[i]) {
@@ -201,7 +200,6 @@ function sapXep_tangDan() {
             }
         }
     }
-    console.log(newArr)
     document.getElementById("result7").style.display = "block";  //hiện kết quả
     document.getElementById("result7").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu success
     document.getElementById("result7").innerHTML = "Mảng sắp xếp tăng dần: <br>" + newArr
@@ -276,7 +274,6 @@ function dem_soNguyen() {
             danhSach += B9_arr[i] + ", "
         }
     }
-    console.log(count)
     if (count != 0) {
         document.getElementById("result9").style.display = "block";  //hiện kết quả
         document.getElementById("result9").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu success
