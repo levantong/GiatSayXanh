@@ -15,7 +15,7 @@ function taoMangNhanh(){ //lập hàm tạo mảng nhanh bằng cách thêm các
     var soPhanTu = Number(document.getElementById("soPhanTu").value)
 
     for (var i = 0; i < soPhanTu; i++){
-        var random = Math.round(Math.random() * (100 + 100) - 100); //áp dụng công thức tạo số ngẫu nhiên trong khoảng Min-Max = Math.random() * (Max - Min) + Min)
+        var random = Math.round(Math.random() * (100 + 100) - 100); //Tạo số nguyên ngẫu nhiên trong khoảng -100 đến 100 áp dụng công thức tạo số ngẫu nhiên trong khoảng Min-Max = Math.random() * (Max - Min) + Min)
         arr.push(random)
     }
     document.getElementById("arr").innerHTML = "Mảng có "+arr.length+" số: "+ arr 
@@ -78,7 +78,7 @@ function tim_duongMin(){
 
     if (mang_soDuong.length == 0) {  //thông báo khi mảng số dương không có số nào
         document.getElementById("result4").style.display = "block";  //hiện kết quả
-        document.getElementById("result4").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warrning
+        document.getElementById("result4").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warning
         document.getElementById("result4").innerHTML = "Không có số dương trong mảng!"
     } else {
         var duongMin = mang_soDuong[0];
@@ -106,7 +106,7 @@ function timSo_chanCuoi(){
     }
     if (count == 0) {  //thông báo khi mảng số dương không có số nào
         document.getElementById("result5").style.display = "block";  //hiện kết quả
-        document.getElementById("result5").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warrning
+        document.getElementById("result5").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warning
         document.getElementById("result5").innerHTML = "Không có số chẵn nào trong mảng!"
     } else {
         document.getElementById("result5").style.display = "block";  //hiện kết quả
@@ -155,11 +155,11 @@ function doiCho(){
 
     if (viTri1 >= arr.length || viTri2 >= arr.length) { //Thông báo nhắc khi user nhập vào vị trí lớn hơn độ dài mảng
         document.getElementById("result6").style.display = "block";  //hiện kết quả
-        document.getElementById("result6").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warrning
+        document.getElementById("result6").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warning
         document.getElementById("result6").innerHTML = "Vui lòng nhập vào vị trí nhỏ hơn " + arr.length +"!"
     } else if (viTri1.length == 0 || viTri2.length == 0 ) { //Thông báo nhắc user nhập đủ 2 vị trí cần đổi, tránh trường hợp không nhập nó mặc định vị trí là 0
         document.getElementById("result6").style.display = "block";  //hiện kết quả
-        document.getElementById("result6").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warrning
+        document.getElementById("result6").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warning
         document.getElementById("result6").innerHTML = "Vui lòng nhập vào cả 2 vị trí!"
     } else {
         var temp = 0;
@@ -176,7 +176,7 @@ function doiCho(){
             }
         }
         document.getElementById("result6").style.display = "block";  //hiện kết quả
-        document.getElementById("result6").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu warrning
+        document.getElementById("result6").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu success
         document.getElementById("result6").innerHTML = "Mảng sau khi đổi: <br>" + GiaTri_kemViTri
     }
     
@@ -203,7 +203,7 @@ function sapXep_tangDan() {
     }
     console.log(newArr)
     document.getElementById("result7").style.display = "block";  //hiện kết quả
-    document.getElementById("result7").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu warrning
+    document.getElementById("result7").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu success
     document.getElementById("result7").innerHTML = "Mảng sắp xếp tăng dần: <br>" + newArr
 }
 document.getElementById("btnCalc7").onclick = sapXep_tangDan;
@@ -221,14 +221,14 @@ function timSo_nguyenTo() {
         }
         if (count == 2) {
             document.getElementById("result8").style.display = "block";  //hiện kết quả
-            document.getElementById("result8").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu warrning
+            document.getElementById("result8").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu success
             document.getElementById("result8").innerHTML = "Số nguyên tố đầu tiên là: " + arr[i]
             return
 
         } else {
             So_nguyenTo = -1
             document.getElementById("result8").style.display = "block";  //hiện kết quả
-            document.getElementById("result8").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu warrning
+            document.getElementById("result8").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warning
             document.getElementById("result8").innerHTML = "Không có số nguyên tố nào"
         }
     }
@@ -237,4 +237,87 @@ function timSo_nguyenTo() {
 
 document.getElementById("btnCalc8").onclick = timSo_nguyenTo;
 
+/** Bài 9 - Tìm số nguyên trong mảng số thực */
 
+//Khởi tạo mảng số thực mới
+var B9_arr = []; 
+
+//lập hàm thêm số thủ công
+function B9_themSo(){ 
+    var num = Number(document.getElementById("B9_inputNum").value)
+    if(document.getElementById("B9_inputNum").value.length == 0){
+        alert('Xin vui lòng nhập 1 số')
+    } else {
+        B9_arr.push(num)
+    }
+    document.getElementById("B9_arr").innerHTML = "Mảng có "+B9_arr.length+" số: "+ B9_arr 
+}
+document.getElementById("B9_addNum").onclick = B9_themSo;
+
+//lập hàm tạo mảng nhanh bằng cách thêm các số ngẫu nhiên vào mảng
+function B9_taoMangNhanh(){ 
+    var soPhanTu = Number(document.getElementById("B9_soPhanTu").value)
+
+    for (var i = 0; i < soPhanTu; i++){
+        var random = (Math.random() * (100 + 100) - 100).toFixed(1); //Tạo số thực ngẫu nhiên từ -100 đến 100, áp dụng công thức tạo số ngẫu nhiên trong khoảng Min-Max = Math.random() * (Max - Min) + Min)
+        B9_arr.push(random)
+    }
+    document.getElementById("B9_arr").innerHTML = "Mảng có "+B9_arr.length+" số: "+ B9_arr 
+}
+document.getElementById("B9_btn_taoNhanh").onclick = B9_taoMangNhanh;
+
+// Duyệt mảng số thực mới tạo, dùng hàm Number.isInteger() để kiểm tra số nguyên
+function dem_soNguyen() {
+    var count = 0; //tạo biến dùng để đếm số nguyên
+    var danhSach = ""
+    for (var i = 0; i <= B9_arr.length; i++) {
+        if (Number.isInteger(B9_arr[i])) {
+            count++;
+            danhSach += B9_arr[i] + ", "
+        }
+    }
+    console.log(count)
+    if (count != 0) {
+        document.getElementById("result9").style.display = "block";  //hiện kết quả
+        document.getElementById("result9").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu success
+        document.getElementById("result9").innerHTML = "Mảng vừa nhập có " + count + " số nguyên là: "+ danhSach
+    } else {
+        document.getElementById("result9").style.display = "block";  //hiện kết quả
+        document.getElementById("result9").className = "alert alert-warning mt-3"; //đổi màu thông báo sang kiểu warning
+        document.getElementById("result9").innerHTML = "Mảng không có số nguyên nào!"
+    }
+}
+document.getElementById("btnCalc9").onclick = dem_soNguyen;
+
+    /** Bài 10 - So sánh số lượng số dương và số âm */
+
+function soSanh_soLuong() {
+    var soDuong = 0;
+    var arr_soDuong = []
+    var soAm = 0;
+    var arr_soAm = []
+    var ketqua = ""
+    for (var i = 0; i < arr.length; i++) { //duyệt mảng
+        if (arr[i] > 0){
+            soDuong++
+            arr_soDuong.push(arr[i])
+        } else if (arr[i] < 0){
+            soAm++
+            arr_soAm.push(arr[i])
+
+        }
+        //số 0 không là số dương cũng ko là số âm
+    }
+    if (soDuong > soAm){
+        ketqua = "Mảng có số dương nhiều hơn số âm."
+    } else if (soDuong < soAm){
+        ketqua = "Mảng có số âm nhiều hơn số dương."
+    } else{
+        ketqua = "Mảng có số âm bằng số dương."
+
+    }
+    document.getElementById("result10").style.display = "block";  //hiện kết quả
+    document.getElementById("result10").className = "alert alert-success mt-3"; //đổi màu thông báo sang kiểu success
+    document.getElementById("result10").innerHTML = "Số lượng số dương: " + soDuong + " ("+arr_soDuong+") <br> Số lượng số âm: "+ soAm + " ("+arr_soAm+") <br>Vậy " + ketqua
+}
+document.getElementById("btnCalc10").onclick = soSanh_soLuong;
