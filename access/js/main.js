@@ -135,6 +135,7 @@ document.getElementById("btn-ShowArray").onclick = hienGiaTri_kemViTri;
 
 function hienSo_daChon1(){
     var viTri1 =document.getElementById("viTri1").value
+    document.getElementById("hien2soChon").style.display = "block";  //hiện kết quả
     document.getElementById("hien2soChon").innerHTML = "Bạn đã chọn đổi 2 số: " + arr[viTri1] + " (vị trí "+ viTri1+")"
 }
 
@@ -142,6 +143,7 @@ document.getElementById("viTri1").addEventListener('change', hienSo_daChon1)
 
 function hienSo_daChon2(){
     var viTri2 =document.getElementById("viTri2").value
+    document.getElementById("hien2soChon").style.display = "block";  //hiện kết quả
     document.getElementById("hien2soChon").append(" và số "+ arr[viTri2] + " (vị trí "+ viTri2+")")
 }
 
@@ -255,10 +257,15 @@ document.getElementById("B9_addNum").onclick = B9_themSo;
 //lập hàm tạo mảng nhanh bằng cách thêm các số ngẫu nhiên vào mảng
 function B9_taoMangNhanh(){ 
     var soPhanTu = Number(document.getElementById("B9_soPhanTu").value)
-
-    for (var i = 0; i < soPhanTu; i++){
-        var random = (Math.random() * (100 + 100) - 100).toFixed(1); //Tạo số thực ngẫu nhiên từ -100 đến 100, áp dụng công thức tạo số ngẫu nhiên trong khoảng Min-Max = Math.random() * (Max - Min) + Min)
-        B9_arr.push(random)
+    var random = Math.round(Math.random() * (soPhanTu - 1) + 1)
+    console.log("số ngẫu nhiên: "+random)
+    for (var i = 0; i < random; i++){
+        var Num1_random = Math.round(Math.random() * (100 + 100) - 100); //Tạo số nguyên ngẫu nhiên trong khoảng -100 đến 100 áp dụng công thức tạo số ngẫu nhiên trong khoảng Min-Max = Math.random() * (Max - Min) + Min)
+        B9_arr.push(Num1_random)
+    }
+    for (var i = 0; i < soPhanTu - random ; i++){
+        var Num2_random = (Math.random() * (100 + 100) - 100).toFixed(2); //Tạo số thực ngẫu nhiên từ -100 đến 100, áp dụng công thức tạo số ngẫu nhiên trong khoảng Min-Max = Math.random() * (Max - Min) + Min)
+        B9_arr.push(Num2_random)
     }
     document.getElementById("B9_arr").innerHTML = "Mảng có "+B9_arr.length+" số: "+ B9_arr 
 }
