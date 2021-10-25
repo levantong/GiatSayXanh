@@ -41,7 +41,7 @@ function tinhTong_soDuong() {
         }
         document.getElementById("result1").style.display = "block";  //hiện kết quả
         document.getElementById("result1").className = "alert alert-success mt-3"; //đổi lại màu thông báo sang kiểu success nếu lỡ người dùng nhập sai trước đó
-        document.getElementById("result1").innerHTML = "Tổng các số dương của mảng là: S = " + bieuThuc + "0 = " + sum + "."
+        document.getElementById("result1").innerHTML = "Tổng các số dương của mảng là: S = " + bieuThuc + "0 = " + sum
     }
 }
 document.getElementById("btnCalc1").onclick = tinhTong_soDuong;
@@ -65,7 +65,7 @@ function dem_soDuong() {
         }
         document.getElementById("result2").style.display = "block";  //hiện kết quả
         document.getElementById("result2").className = "alert alert-success mt-3"; //đổi lại màu thông báo sang kiểu success nếu lỡ người dùng nhập sai trước đó
-        document.getElementById("result2").innerHTML = "Mảng có " + count + " số dương là: " + bieuThuc + "."
+        document.getElementById("result2").innerHTML = "Mảng có " + count + " số dương là: " + bieuThuc 
     }
 }
 document.getElementById("btnCalc2").onclick = dem_soDuong;
@@ -88,7 +88,7 @@ function tim_Min() {
         }
         document.getElementById("result3").style.display = "block";  //hiện kết quả
         document.getElementById("result3").className = "alert alert-success mt-3"; //đổi lại màu thông báo sang kiểu success nếu lỡ người dùng nhập sai trước đó
-        document.getElementById("result3").innerHTML = "Số nhỏ nhất mảng là: " + min + "."
+        document.getElementById("result3").innerHTML = "Số nhỏ nhất mảng là: " + min 
     }
 }
 document.getElementById("btnCalc3").onclick = tim_Min;
@@ -123,7 +123,7 @@ function tim_duongMin() {
             }
             document.getElementById("result4").style.display = "block";  //hiện kết quả
             document.getElementById("result4").className = "alert alert-success mt-3"; //đổi lại màu thông báo sang kiểu success nếu lỡ người dùng nhập sai trước đó
-            document.getElementById("result4").innerHTML = "Số dương nhỏ nhất của mảng là: " + duongMin + "."
+            document.getElementById("result4").innerHTML = "Số dương nhỏ nhất của mảng là: " + duongMin
         }
     }
 }
@@ -153,7 +153,7 @@ function timSo_chanCuoi() {
         } else {
             document.getElementById("result5").style.display = "block";  //hiện kết quả
             document.getElementById("result5").className = "alert alert-success mt-3"; //đổi lại màu thông báo sang kiểu success nếu lỡ người dùng nhập sai trước đó
-            document.getElementById("result5").innerHTML = "Số chẵn cuối cùng của mảng là: " + So_chanCuoi + "."
+            document.getElementById("result5").innerHTML = "Số chẵn cuối cùng của mảng là: " + So_chanCuoi
         }
     }
 }
